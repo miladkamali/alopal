@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+package alopal.backend;
+option cc_enable_arenas = true;
+option java_multiple_files = true;
+option java_package = "alopal.backend";
+import "google/protobuf/wrappers.proto";
+import "alopal/backend/base.proto";
+
+message RegisterUserRequest {
+  RequestContext request_context=1;
+  UserBaseInfo user=2;
+  string password =3;
+}
+
+message RegisterUserResponse{
+  ResponseContext response_context = 1 ;
+  string user_id = 2 ;
+}
+
+message ListAllUsers {
+  RequestContext request_context = 1;
+  Page page = 2;
+}
+
+message UserBaseInfo {
+  string username=2;
+  string email_address = 3;
+
+}
+
+message UserInfo {
+  UserBaseInfo user_base_info=1;
+
+
+}
+
+message ListAllUserRequest {
+  RequestContext request_context = 1;
+  Page page = 2;
+}
+
+message ListAllUserResponse {
+  repeated UserInfo user_list = 1;
+  Pagination pagination=2;
+}
+
+
+message GetUserInfoRequest {
+  RequestContext request_context = 1;
+  string user_id = 2;
+}
+
+message GetUserInfoResponse{
+  ResponseContext response_context = 1;
+  UserInfo user_info = 2;
+}

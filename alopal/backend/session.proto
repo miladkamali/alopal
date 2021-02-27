@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+package alopal.backend;
+option cc_enable_arenas = true;
+option java_multiple_files = true;
+option java_package = "alopal.backend";
+import "google/protobuf/wrappers.proto";
+import "alopal/backend/base.proto";
+enum UserType{
+  ALO = 0;
+  PAL = 1;
+  ADMIN = 2;
+}
+
+message EmailRegistrationRequest{
+  RequestContext request_context = 1;
+  string email_address = 2;
+}
+
+message EmailRegistrationResponse{
+  ResponseContext response_context = 1 ;
+  string email_token_id = 2 ;
+}
+
+message EmailVerificationRequest{
+  RequestContext request_context = 1;
+  string key = 2;
+}
+
+message EmailVerificationResponse{
+  ResponseContext response_context = 1;
+  string user_registration_token =  2;
+
+}
+
+message PlainLoginRequest{
+  RequestContext request_context = 1;
+  string username = 2;
+  string password = 3;
+}
+
+
+message LoginResponse {
+  ResponseContext response_context = 1;
+  string token = 2;
+  UserType user_type = 3;
+}
+
+message LogOutRequest{
+  RequestContext request_context = 1;
+}
+
+message LogOutResponse {
+  ResponseContext response_context=1;
+}

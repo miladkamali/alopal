@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package alopal.backend.services;
+option cc_enable_arenas = true;
+option java_multiple_files = true;
+option java_package = "alopal.backend.services";
+import "google/protobuf/wrappers.proto";
+import "alopal/backend/user.proto";
+import "google/api/annotations.proto";
+import "google/api/http.proto";
+
+
+service UserService {
+  rpc RegisterUser(RegisterUserRequest) returns (RegisterUserResponse){
+    option(google.api.http) = {
+      post : "/api/user/add"
+      body : "*"
+    };
+  };
+
+  rpc GetAllUserInfo(ListAllUserRequest) returns (ListAllUserResponse){
+    option(google.api.http) = {
+      post : "/api/user/all"
+      body : "*"
+    };
+  };
+
+  rpc GetUserInfo(GetUserInfoRequest) returns (GetUserInfoResponse){
+    option(google.api.http) = {
+      post : "/api/user/info"
+      body : "*"
+    };
+  };
+
+
+}

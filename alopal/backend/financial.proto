@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package alopal.backend;
+option cc_enable_arenas = true;
+option java_multiple_files = true;
+option java_package = "alopal.backend";
+import "google/protobuf/wrappers.proto";
+import "google/rpc/status.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/any.proto";
+import "google/api/http.proto";
+
+
+message Wallet{
+  string id=1;
+}
+message BankInfo{
+  string sheba_number = 1;
+}
+message FinancialInformation {
+  oneof financial_info{
+    Wallet wallet = 1;
+    BankInfo bankInfo = 2;
+  }
+}

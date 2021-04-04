@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+package alopal.backend.services;
+option cc_enable_arenas = true;
+option java_multiple_files = true;
+option java_package = "alopal.backend.services";
+import "google/protobuf/wrappers.proto";
+import "google/api/annotations.proto";
+import "google/api/http.proto";
+import "alopal/backend/base.proto";
+import "google/type/date.proto";
+import "alopal/backend/financial.proto";
+
+enum profileType{
+  Alo = 0;
+  Pal = 1;
+  Admin = 2;
+}
+
+message IdentificationInformation{
+  string first_name = 1;
+  string last_name = 2;
+  google.type.Date date_of_birth = 4;
+}
+
+message CommunicationChannels{
+  string email_address = 1;
+  string phone_number = 2;
+  string skype_id = 3;
+}
+
+message PrivateInformation {
+  IdentificationInformation identification = 1;
+  CommunicationChannels communication_channels = 2;
+}
+
+
+message PublicInformation {
+  string nick_name = 1;
+  string profile_image_id = 2;
+}
+
+message ProfileData{
+  google.protobuf.UInt64Value id = 1;
+  PublicInformation publicly_visible_info = 2;
+  PrivateInformation private_information = 3;
+}
+
+message SetBaseProfileRequest {
+  RequestContext request_context = 1;
+  ProfileData profile_data = 2;
+}
+
+message SetBaseProfileResponse {
+  ResponseContext response_context = 1;
+  int64 profile_id = 2;
+}
+
+
+message UpdateBaseProfileRequest {
+  RequestContext request_context = 1;
+  ProfileData profile_data = 3;
+}
+
+message UpdateBaseProfileResponse {
+  ResponseContext response_context = 1;
+}

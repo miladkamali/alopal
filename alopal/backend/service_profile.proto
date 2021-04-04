@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package alopal.backend.services;
+option cc_enable_arenas = true;
+option java_multiple_files = true;
+option java_package = "alopal.backend.services";
+import "google/protobuf/wrappers.proto";
+import "google/api/annotations.proto";
+import "google/api/http.proto";
+import "alopal/backend/base.proto";
+import "google/type/date.proto";
+
+
+enum InfoType{
+  String = 0;
+  Image = 1;
+  Video = 2;
+}
+
+message Info{
+  string key = 1;
+  string value = 2;
+  InfoType type = 3;
+}
+
+message SetServiceProfileRequest {
+  RequestContext request_context = 1;
+  uint64 profile_id = 2;
+  uint64 service_parent_id = 3;
+  ImageAsset image = 4;
+  string service_description = 5;
+  repeated Info extra_info = 6;
+  repeated Info credential = 7;
+}
+
+message SetServiceProfileResponse{
+  ResponseContext response_context = 1;
+  int64 profile_id = 2;
+}

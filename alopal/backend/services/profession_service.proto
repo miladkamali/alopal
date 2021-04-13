@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package alopal.backend.services;
+option cc_enable_arenas = true;
+option java_multiple_files = true;
+option java_package = "alopal.backend.services";
+import "google/protobuf/wrappers.proto";
+import "alopal/backend/session.proto";
+import "google/api/annotations.proto";
+import "google/api/http.proto";
+import "alopal/backend/profile.proto";
+import "alopal/backend/profession.proto";
+
+
+service addProfession {
+  rpc AddProfession(AddProfessionRequest) returns (AddProfessionResponse){
+    option(google.api.http) = {
+      post : "/api/profession/add"
+      body : "*"
+    };
+  };
+
+  rpc DeleteAProfession(DeleteProfessionRequest) returns (DeleteProfessionResponse){
+    option(google.api.http) = {
+      post : "/api/profession/delete"
+      body : "*"
+    };
+  };
+
+  rpc ListAllProfession(ListAllProfessionsRequest) returns (ListAllProfessionResponse){
+    option(google.api.http) = {
+      post : "/api/profession/all"
+      body : "*"
+    };
+  };
+
+
+}

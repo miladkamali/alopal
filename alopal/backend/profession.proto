@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+package alopal.backend.services;
+option cc_enable_arenas = true;
+option java_multiple_files = true;
+option java_package = "alopal.backend.services";
+import "google/protobuf/wrappers.proto";
+import "google/api/annotations.proto";
+import "google/api/http.proto";
+import "alopal/backend/base.proto";
+import "google/type/date.proto";
+import "alopal/backend/financial.proto";
+
+message Profession {
+  google.protobuf.Int64Value id  = 1;
+  string name = 2;
+  Profession parent_profession = 3;
+}
+
+
+message AddProfessionRequest{
+  RequestContext request_context = 1;
+  Profession profession = 2;
+}
+
+message AddProfessionResponse{
+  ResponseContext response_context = 1;
+  Profession profession = 2;
+}
+
+
+message DeleteProfessionRequest{
+  RequestContext request_context = 1;
+  Profession profession = 2;
+}
+
+message DeleteProfessionResponse{
+  ResponseContext response_context = 1;
+  Profession profession = 2;
+}
+
+
+message ListAllProfessionsRequest{
+  RequestContext request_context = 1;
+}
+
+message ListAllProfessionResponse{
+  ResponseContext response_context = 1;
+  repeated string profession_names = 2;
+}
+
+
+
+

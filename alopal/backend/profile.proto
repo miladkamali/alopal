@@ -113,4 +113,5 @@ message UpdateBaseProfileRequest {
 
 message UpdateBaseProfileResponse {
   ResponseContext response_context = 1;
+  ProfileData profileData = 2;
 }

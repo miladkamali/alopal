@@ -23,17 +23,43 @@ message Info{
   InfoType type = 3;
 }
 
+
+message ServiceProfileData{
+  google.protobuf.Int64Value id = 1;
+  google.protobuf.Int64Value serviceProfessionId = 2;
+  ImageAsset image = 3;
+  string serviceDescription = 4;
+  repeated Info extraInfo = 5;
+  repeated Info credential = 6;
+}
+
 message SetServiceProfileRequest {
   RequestContext request_context = 1;
-  uint64 profile_id = 2;
-  uint64 service_parent_id = 3;
-  ImageAsset image = 4;
-  string service_description = 5;
-  repeated Info extra_info = 6;
-  repeated Info credential = 7;
+  ServiceProfileData profile = 2;
 }
 
 message SetServiceProfileResponse{
   ResponseContext response_context = 1;
   int64 profile_id = 2;
+}
+
+
+message UpdateServiceProfileRequest{
+  RequestContext request_context = 1;
+  ServiceProfileData profile = 2;
+}
+
+message UpdateServiceProfileResponse{
+  ResponseContext response_context = 1;
+  ServiceProfileData profile = 2;
+}
+
+
+message GetCurrentServiceProfileRequest{
+  RequestContext request_context = 1;
+}
+
+message GetCurrentServiceProfileResponse{
+  ResponseContext response_context = 1;
+  ServiceProfileData profile = 2;
 }

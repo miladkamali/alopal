@@ -18,9 +18,15 @@ service ServiceProfileService {
       body : "*"
     };
   };
-  rpc UpdateServiceProfile(UpdateBaseProfileRequest) returns (UpdateBaseProfileResponse){
+  rpc UpdateServiceProfile(UpdateServiceProfileRequest) returns (UpdateServiceProfileResponse){
     option(google.api.http) = {
       post : "/api/profile/service/update"
+      body : "*"
+    };
+  };
+  rpc GetCurrentServiceProfile(UpdateServiceProfileRequest) returns (UpdateServiceProfileResponse){
+    option(google.api.http) = {
+      post : "/api/profile/service/current"
       body : "*"
     };
   };

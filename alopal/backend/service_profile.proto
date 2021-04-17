@@ -25,8 +25,8 @@ message Info{
 
 
 message ServiceProfileData{
-  google.protobuf.Int64Value id = 1;
-  google.protobuf.Int64Value serviceProfessionId = 2;
+  google.protobuf.UInt64Value id = 1;
+  google.protobuf.UInt64Value serviceProfessionId = 2;
   ImageAsset image = 3;
   string serviceDescription = 4;
   repeated Info extraInfo = 5;

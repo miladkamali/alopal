@@ -7,15 +7,22 @@ option java_package = "alopal.backend";
 import "google/protobuf/wrappers.proto";
 import "alopal/backend/base.proto";
 
+enum UserType {
+  ALO = 0;
+  PAL = 1;
+  ADMIN = 2;
+}
+
 message RegisterUserRequest {
   RequestContext request_context=1;
   UserBaseInfo user=2;
   string password =3;
+  UserType user_type = 4;
 }
 
 message RegisterUserResponse{
   ResponseContext response_context = 1 ;
-  string user_id = 2 ;
+  uint64 user_id = 2 ;
 }
 
 message ListAllUsers {

@@ -33,6 +33,4 @@ service addProfession {
       body : "*"
     };
   };
-
-
 }

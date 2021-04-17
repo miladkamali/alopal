@@ -20,13 +20,25 @@ enum profileType{
 message IdentificationInformation{
   string first_name = 1;
   string last_name = 2;
-  google.type.Date date_of_birth = 4;
+  google.type.Date date_of_birth = 3 ;
+
+  // are mandatory for PAL
+  google.protobuf.StringValue national_code = 4;
+  // mandatory for both alo and pal
+  google.protobuf.StringValue country = 5;
+  // mandatory for both alo and pal
+  google.protobuf.StringValue province = 6;
+  // are mandatory for PAL
+  google.protobuf.StringValue address = 7;
+
 }
 
 message CommunicationChannels{
   string email_address = 1;
   string phone_number = 2;
-  string skype_id = 3;
+  // are mandatory for PAL
+  string landline = 3;
+  string skype_id = 4;
 }
 
 message PrivateInformation {
@@ -34,10 +46,17 @@ message PrivateInformation {
   CommunicationChannels communication_channels = 2;
 }
 
+enum Gender{
+  PreferNotToSay = 0;
+  Male = 1;
+  Female = 2;
+  Other = 3;
+}
 
 message PublicInformation {
   string nick_name = 1;
   string profile_image_id = 2;
+  Gender gender = 3;
 }
 
 message ProfileData{
@@ -54,6 +73,36 @@ message SetBaseProfileRequest {
 message SetBaseProfileResponse {
   ResponseContext response_context = 1;
   int64 profile_id = 2;
+}
+
+
+message GetBaseProfileRequest {
+  RequestContext request_context = 1;
+}
+
+message GetBaseProfileResponse {
+  ResponseContext response_context = 1;
+  ProfileData profile = 2;
+}
+
+message GetAllProfilesRequest{
+  RequestContext request_context = 1;
+}
+
+message GetAllProfilesResponse{
+  ResponseContext response_context = 1;
+   repeated ProfileData profile = 2;
+}
+
+
+message GetProfileByIdRequest{
+  RequestContext request_context = 1;
+  uint64 profileId =2;
+}
+
+message GetProfileByIdResponse{
+  ResponseContext response_context = 1;
+  ProfileData profile = 2;
 }
 
 

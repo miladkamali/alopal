@@ -17,6 +17,29 @@ service BaseProfileService {
       body : "*"
     };
   };
+
+  rpc GetCurrentBaseProfile(GetBaseProfileRequest) returns (GetBaseProfileResponse){
+    option(google.api.http) = {
+      post : "/api/profile/base/current"
+      body : "*"
+    };
+  };
+
+  rpc GetAllBaseProfile(GetAllProfilesRequest) returns (GetAllProfilesResponse){
+    option(google.api.http) = {
+      post : "/api/profile/base/all"
+      body : "*"
+    };
+  };
+
+  rpc GetBaseProfile(GetBaseProfileRequest) returns (GetBaseProfileResponse){
+    option(google.api.http) = {
+      post : "/api/profile/base/one"
+      body : "*"
+    };
+  };
+
+
   rpc UpdateBaseProfile(UpdateBaseProfileRequest) returns (UpdateBaseProfileResponse){
     option(google.api.http) = {
       post : "/api/profile/base/update"

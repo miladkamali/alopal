@@ -14,6 +14,8 @@ message EmailRegistrationRequest{
   RequestContext request_context = 1;
   string email_address = 2;
   UserType user_type = 3;
+  string fistName = 4;
+  string lastName = 5;
 }
 
 message EmailRegistrationResponse{

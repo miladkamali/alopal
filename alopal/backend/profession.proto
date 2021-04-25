@@ -12,9 +12,9 @@ import "google/type/date.proto";
 import "alopal/backend/financial.proto";
 
 message Profession {
-  google.protobuf.Int64Value id  = 1;
+  google.protobuf.UInt64Value id  = 1;
   string name = 2;
-  Profession parent_profession = 3;
+  Profession parentProfession = 3;
 }
 
 
@@ -40,13 +40,24 @@ message DeleteProfessionResponse{
 }
 
 
+message GetProfessionByIdRequest{
+  RequestContext request_context = 1;
+  google.protobuf.UInt64Value professionId =2;
+}
+
+message GetProfessionByIdResponse{
+  ResponseContext response_context = 1;
+  Profession professions = 2;
+}
+
+
 message ListAllProfessionsRequest{
   RequestContext request_context = 1;
 }
 
 message ListAllProfessionResponse{
   ResponseContext response_context = 1;
-  repeated string profession_names = 2;
+  repeated Profession professions = 2;
 }
 
 

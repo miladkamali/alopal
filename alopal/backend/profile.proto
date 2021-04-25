@@ -63,6 +63,7 @@ message ProfileData{
   google.protobuf.UInt64Value id = 1;
   PublicInformation publicly_visible_info = 2;
   PrivateInformation private_information = 3;
+  bool receiveNews = 4;
 }
 
 message SetBaseProfileRequest {

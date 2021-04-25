@@ -33,4 +33,11 @@ service addProfession {
       body : "*"
     };
   };
+
+  rpc GetProfessionById(GetProfessionByIdRequest) returns (GetProfessionByIdResponse){
+    option(google.api.http) = {
+      post : "/api/profession/get"
+      body : "*"
+    };
+  };
 }

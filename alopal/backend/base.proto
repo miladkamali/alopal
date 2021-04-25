@@ -16,6 +16,10 @@ message ResponseContext {
   string correlation_id = 3;
 }
 
+message Iso8601DateTime{
+  string time=1;
+}
+
 message ImageAsset {
   string asset_id = 1;
 }

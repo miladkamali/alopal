@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package alopal.backend.services;
+option cc_enable_arenas = true;
+option java_multiple_files = true;
+option java_package = "alopal.backend.services";
+import "google/protobuf/wrappers.proto";
+import "google/api/annotations.proto";
+import "google/api/http.proto";
+import "alopal/backend/base.proto";
+import "google/type/date.proto";
+import "alopal/backend/financial.proto";
+
+
+message TimeSlot{
+  google.protobuf.UInt64Value id =1;
+  alopal.backend.Iso8601DateTime startDateTime = 2;
+  alopal.backend.Iso8601DateTime endDateTime = 3;
+  google.protobuf.UInt64Value profileId=4;
+}
+
+message SetTimeSlotsForServiceRequest{
+  RequestContext request_context = 1;
+  repeated TimeSlot timeSlots=2;
+}
+
+message SetTimeSlotsForServiceResponse{
+  ResponseContext response_context = 1;
+}
+
+
+
+

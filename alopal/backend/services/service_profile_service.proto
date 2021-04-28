@@ -24,7 +24,7 @@ service ServiceProfileService {
       body : "*"
     };
   };
-  rpc GetCurrentServiceProfile(UpdateServiceProfileRequest) returns (UpdateServiceProfileResponse){
+  rpc GetCurrentServiceProfile(GetCurrentServiceProfileRequest) returns (GetCurrentServiceProfileResponse){
     option(google.api.http) = {
       post : "/api/profile/service/current"
       body : "*"

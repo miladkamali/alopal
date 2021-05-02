@@ -16,7 +16,7 @@ message TimeSlot{
   google.protobuf.UInt64Value id =1;
   alopal.backend.Iso8601DateTime startDateTime = 2;
   alopal.backend.Iso8601DateTime endDateTime = 3;
-  google.protobuf.UInt64Value profileId=4;
+  google.protobuf.UInt64Value serviceProfileId=4;
 }
 
 message SetTimeSlotsForServiceRequest{

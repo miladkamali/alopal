@@ -30,6 +30,7 @@ message IdentificationInformation{
   google.protobuf.StringValue province = 6;
   // are mandatory for PAL
   google.protobuf.StringValue address = 7;
+  google.protobuf.StringValue city = 8;
 
 }
 

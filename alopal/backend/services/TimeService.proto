@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package alopal.backend.services;
+option cc_enable_arenas = true;
+option java_multiple_files = true;
+option java_package = "alopal.backend.services";
+import "google/protobuf/wrappers.proto";
+import "alopal/backend/session.proto";
+import "google/api/annotations.proto";
+import "google/api/http.proto";
+import "alopal/backend/profile.proto";
+import "alopal/backend/service_profile.proto";
+import "alopal/backend/TimeSlots.proto";
+
+service TimeProfileService {
+  rpc AddTimeForServiceProfile(SetTimeSlotsForServiceRequest) returns (SetTimeSlotsForServiceResponse){
+    option(google.api.http) = {
+      post : "/api/profile/service/time/add"
+      body : "*"
+    };
+  };
+
+}

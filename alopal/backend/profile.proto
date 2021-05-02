@@ -65,6 +65,7 @@ message ProfileData{
   PublicInformation publicly_visible_info = 2;
   PrivateInformation private_information = 3;
   bool receiveNews = 4;
+  string currency=5;
 }
 
 message SetBaseProfileRequest {

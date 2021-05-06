@@ -19,5 +19,11 @@ service TimeProfileService {
       body : "*"
     };
   };
+  rpc deleteTimeSlots(DeleteATimeSlotRequest) returns (DeleteATimeSlotResponse){
+    option(google.api.http) = {
+      post : "/api/profile/service/time/delete"
+      body : "*"
+    };
+  };
 
 }

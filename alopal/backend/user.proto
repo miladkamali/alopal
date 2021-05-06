@@ -31,8 +31,10 @@ message ListAllUsers {
 }
 
 message UserBaseInfo {
+  uint64 userId=1;
   string username=2;
   string email_address = 3;
+  UserType userType = 4;
 
 }
 

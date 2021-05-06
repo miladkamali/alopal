@@ -14,9 +14,30 @@ import "alopal/backend/financial.proto";
 
 message TimeSlot{
   google.protobuf.UInt64Value id =1;
-  alopal.backend.Iso8601DateTime startDateTime = 2;
-  alopal.backend.Iso8601DateTime endDateTime = 3;
+  alopal.backend.Iso8601DateTime startTime = 2;
+  alopal.backend.Iso8601DateTime endTime = 3;
   google.protobuf.UInt64Value serviceProfileId=4;
+}
+
+
+message DeleteATimeSlotRequest{
+  RequestContext request_context = 1;
+  uint64 timeSlotId = 2;
+}
+
+message DeleteATimeSlotResponse{
+  ResponseContext response_context = 1;
+}
+
+message ListTimeSlotsForTimeRangeRequest{
+  RequestContext request_context = 1;
+  alopal.backend.Iso8601DateTime startTime=2;
+  alopal.backend.Iso8601DateTime endTime=3;
+}
+
+message ListTimeSlotsForTimeRangeResponse{
+  RequestContext request_context = 1;
+  repeated TimeSlot timeSlots=2;
 }
 
 message SetTimeSlotsForServiceRequest{
@@ -26,6 +47,7 @@ message SetTimeSlotsForServiceRequest{
 
 message SetTimeSlotsForServiceResponse{
   ResponseContext response_context = 1;
+  repeated TimeSlot timeSlots=2;
 }
 
 

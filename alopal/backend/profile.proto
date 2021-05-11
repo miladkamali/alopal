@@ -66,6 +66,7 @@ message ProfileData{
   PrivateInformation private_information = 3;
   bool receiveNews = 4;
   string currency=5;
+  string timeZone=6;
 }
 
 message SetBaseProfileRequest {

@@ -20,12 +20,49 @@ message TimeSlot{
 }
 
 
+
+message GetAllTimeSlotsForTimePeriodRequest{
+  RequestContext request_context = 1;
+  alopal.backend.Iso8601DateTime startTime = 2;
+  alopal.backend.Iso8601DateTime endTime = 3;
+  google.protobuf.UInt64Value serviceProfileId=4;
+}
+
+message GetAllTimeSlotsForTimePeriodResponse{
+  ResponseContext response_context = 1;
+  repeated TimeSlot timeSlots = 2;
+}
+
+message GetAvailableTimeSlotsForTimePeriodRequest{
+  RequestContext request_context = 1;
+  alopal.backend.Iso8601DateTime startTime = 2;
+  alopal.backend.Iso8601DateTime endTime = 3;
+  google.protobuf.UInt64Value serviceProfileId=4;
+}
+
+
+message GetAvailableTimeSlotsForTimePeriodResponse{
+  ResponseContext response_context = 1;
+  repeated TimeSlot timeSlots = 2;
+}
+
+
 message DeleteATimeSlotRequest{
   RequestContext request_context = 1;
   uint64 timeSlotId = 2;
 }
 
 message DeleteATimeSlotResponse{
+  ResponseContext response_context = 1;
+}
+
+
+message BulkDeleteTimeSlotRequest{
+  RequestContext request_context = 1;
+  repeated uint64 timeSlotId = 2;
+}
+
+message BulkDeleteTimeSlotResponse{
   ResponseContext response_context = 1;
 }
 

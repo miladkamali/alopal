@@ -1,0 +1,90 @@
+syntax = "proto3";
+
+package alopal.backend.services;
+option cc_enable_arenas = true;
+option java_multiple_files = true;
+option java_package = "alopal.backend.services";
+import "google/protobuf/wrappers.proto";
+import "google/api/annotations.proto";
+import "google/api/http.proto";
+import "alopal/backend/base.proto";
+import "google/type/date.proto";
+
+
+message MeetingTime{
+  repeated int64 timeSlotIds=1;
+}
+
+enum MeetingStatus{
+  unknown = 0;
+  Reserved = 1;
+  Booked = 2;
+  Completed = 3;
+  CanceledByAlo = 4;
+  CanceledByPal = 5;
+  CanceledByAdmin = 6;
+
+}
+
+message Meeting{
+  // optional server will always send it in responses
+  google.protobuf.UInt64Value id=1 ;
+  // it is required to send this field
+  google.protobuf.UInt64Value professionProfileId=2;
+  //required
+  google.protobuf.UInt64Value sessionTypeId=3;
+  //required
+  google.protobuf.UInt64Value userProfileId=4;
+  MeetingTime meetingTime = 5;
+
+}
+
+
+message MeetingStatusContainer {
+  Meeting meeting = 1;
+  MeetingStatus status = 2;
+}
+message BookAMeetingRequest {
+  RequestContext request_context = 1;
+  Meeting meetingTime = 2;
+}
+
+message BookAMeetingResponse {
+  ResponseContext response_context = 1;
+  Meeting meeting= 2;
+}
+
+message CancelAMeetingRequest{
+  RequestContext request_context = 1;
+  Meeting meeting=2;
+}
+
+message CancelAMeetingResponse{
+   ResponseContext response_context = 1;
+}
+
+message ListActiveMeetingRequest{
+  RequestContext request_context = 1;
+}
+
+
+message ListActiveMeetingResponse{
+  ResponseContext response_context = 1;
+  repeated Meeting meetings = 2;
+}
+
+
+message ListAllMeetingRequest{
+  RequestContext request_context = 1;
+  Page page = 2;
+}
+
+message ListAllMeetingResponse{
+  ResponseContext response_context = 1;
+  repeated Meeting meetings = 2;
+  Pagination pagination = 3;
+}
+
+
+
+

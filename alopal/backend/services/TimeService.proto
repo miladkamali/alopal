@@ -14,27 +14,27 @@ import "alopal/backend/TimeSlots.proto";
 
 service TimeProfileService {
   //implemented
-  rpc AddTimeForServiceProfile(SetTimeSlotsForServiceRequest) returns (SetTimeSlotsForServiceResponse){
+  rpc AddTimeSlots(SetTimeSlotsForServiceRequest) returns (SetTimeSlotsForServiceResponse){
     option(google.api.http) = {
       post : "/api/profile/service/time/add"
       body : "*"
     };
   };
   //implemented
-  rpc deleteTimeSlots(DeleteATimeSlotRequest) returns (DeleteATimeSlotResponse){
+  rpc deleteTimeSlot(DeleteATimeSlotRequest) returns (DeleteATimeSlotResponse){
     option(google.api.http) = {
       post : "/api/profile/service/time/delete"
       body : "*"
     };
   };
-  //not implemented
+  //implemented
   rpc deleteBulkTimeSlots(BulkDeleteTimeSlotRequest) returns (BulkDeleteTimeSlotResponse){
     option(google.api.http) = {
       post : "/api/profile/service/time/delete/bulk"
       body : "*"
     };
   };
-  //not implemented
+  // implemented
   rpc GetAllTimeSlotsForTimePeriod(GetAllTimeSlotsForTimePeriodRequest) returns (GetAllTimeSlotsForTimePeriodResponse){
     option(google.api.http) = {
       post : "/api/profile/service/time/get/all"

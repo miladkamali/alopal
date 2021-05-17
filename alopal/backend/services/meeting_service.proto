@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+package alopal.backend.services;
+option cc_enable_arenas = true;
+option java_multiple_files = true;
+option java_package = "alopal.backend.services";
+import "google/protobuf/wrappers.proto";
+import "alopal/backend/session.proto";
+import "google/api/annotations.proto";
+import "google/api/http.proto";
+import "alopal/backend/meet.proto";
+service MeetingService {
+  //not implemented
+  rpc SetAMeeting(BookAMeetingRequest) returns (BookAMeetingResponse){
+    option(google.api.http) = {
+      post : "/api/meeting/book"
+      body : "*"
+    };
+  };
+
+  // not implemented
+  rpc CancelAMeeting(CancelAMeetingRequest) returns (CancelAMeetingResponse){
+    option(google.api.http) = {
+      post : "/api/meeting/cancel"
+      body : "*"
+    };
+  };
+
+  //not implemented
+  rpc ListMeetings(ListActiveMeetingRequest) returns (ListActiveMeetingRequest){
+    option(google.api.http) = {
+      post : "/api/meeting/list/active"
+      body : "*"
+    };
+  };
+
+  //not implemented
+  rpc EmailVerification(ListAllMeetingRequest) returns (ListAllMeetingResponse){
+    option(google.api.http) = {
+      post : "/api/meeting/list/all"
+      body : "*"
+    };
+  };
+
+}

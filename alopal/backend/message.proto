@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+package alopal.backend;
+option cc_enable_arenas = true;
+option java_multiple_files = true;
+option java_package = "alopal.backend";
+import "google/protobuf/wrappers.proto";
+import "alopal/backend/base.proto";
+
+
+message Message{
+  google.protobuf.UInt64Value senderProfileId = 1;
+  google.protobuf.UInt64Value receiverProfileId =2;
+  google.protobuf.UInt64Value messageId = 3;
+  string title = 4;
+  string content = 5;
+}
+
+message MessageStatusContainer{
+  Message message = 1;
+  bool isRead = 2;
+}
+
+message sendMessageRequest {
+  RequestContext request_context=1;
+  Message message = 2;
+}
+
+message sendMessageResponse {
+  ResponseContext response_context = 1 ;
+}
+
+message DeleteMessageRequest{
+  RequestContext request_context=1;
+  uint64 messageId = 2;
+}
+
+message DeleteMessageResponse{
+  ResponseContext response_context = 1 ;
+}
+
+message SetMessageAsReadRequest {
+  RequestContext request_context=1;
+  uint64 messageId = 2;
+}
+
+message SetMessageAsReadResponse {
+  ResponseContext response_context = 1 ;
+}
+
+message ListMessagesRequest {
+  RequestContext request_context=1;
+}
+
+message ListMessagesResponse{
+  ResponseContext response_context = 1 ;
+  repeated MessageStatusContainer messages = 2;
+}

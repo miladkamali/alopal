@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package alopal.backend.services;
+option cc_enable_arenas = true;
+option java_multiple_files = true;
+option java_package = "alopal.backend.services";
+import "google/protobuf/wrappers.proto";
+import "alopal/backend/session.proto";
+import "google/api/annotations.proto";
+import "google/api/http.proto";
+import "alopal/backend/link.proto";
+service UploadService {
+  //implemented
+  rpc RequestUploadLink(UploadLinkRequest) returns (UploadLinkResponse){
+    option(google.api.http) = {
+      post : "/api/upload/requestLink"
+      body : "*"
+    };
+  };
+
+  // not implemented
+  rpc AssetDownloadLink(AssetDownloadLinkRequest) returns (AssetDownloadLinkResponse){
+    option(google.api.http) = {
+      post : "/api/Download/requestLink"
+      body : "*"
+    };
+  };
+
+
+}

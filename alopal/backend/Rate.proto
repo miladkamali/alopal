@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package alopal.backend.services;
+option cc_enable_arenas = true;
+option java_multiple_files = true;
+option java_package = "alopal.backend.services";
+import "google/protobuf/wrappers.proto";
+import "google/api/annotations.proto";
+import "google/api/http.proto";
+import "alopal/backend/base.proto";
+
+
+enum RatingScore{
+  One = 0;
+  Two = 1;
+  Three = 2;
+  Four = 3;
+  Five = 4;
+}
+
+message Rate{
+  //server provides the id
+  google.protobuf.UInt64Value id = 1;
+  google.protobuf.UInt64Value serviceId = 2;
+  google.protobuf.UInt64Value meetId = 3;
+  string comment = 4;
+}
+
+message RateServiceRequest{
+  RequestContext request_context = 1;
+  Rate rate = 2;
+}
+
+message RateServiceResponse{
+  ResponseContext response_context = 1;
+}
+
+message ListRatingForServiceRequest {
+  RequestContext request_context = 1;
+  google.protobuf.UInt64Value serviceId = 2;
+}
+
+message ListRatingForServiceResponse {
+  ResponseContext response_context = 1;
+  repeated Rate rates = 2;
+}
+
+
+
+

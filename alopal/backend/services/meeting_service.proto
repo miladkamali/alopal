@@ -34,12 +34,27 @@ service MeetingService {
     };
   };
 
-  //not implemented
-  rpc EmailVerification(ListAllMeetingRequest) returns (ListAllMeetingResponse){
+  //implemented
+  rpc AddMeetingType(AddMeetingTypesRequest) returns (AddMeetingTypesResponse){
     option(google.api.http) = {
-      post : "/api/meeting/list/all"
+      post : "/api/meeting/type/add"
       body : "*"
     };
   };
 
+  //implemented
+  rpc DeactivateMeetingType(DeactivateMeetingTypeRequest) returns (DeactivateMeetingTypeResponse){
+    option(google.api.http) = {
+      post : "/api/meeting/type/deactivate"
+      body : "*"
+    };
+  };
+
+  //implemented
+  rpc ListActiveMeetingTypes(ListActiveMeetingTypesForServiceRequest) returns (ListActiveMeetingTypesForServiceResponse){
+    option(google.api.http) = {
+      post : "/api/meeting/type/list"
+      body : "*"
+    };
+  };
 }

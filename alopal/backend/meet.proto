@@ -36,6 +36,7 @@ message Meeting{
   //required
   google.protobuf.UInt64Value userProfileId=4;
   MeetingTime meetingTime = 5;
+  MeetingType meetingType = 6;
 
 }
 
@@ -46,7 +47,7 @@ message MeetingStatusContainer {
 }
 message BookAMeetingRequest {
   RequestContext request_context = 1;
-  Meeting meetingTime = 2;
+  Meeting meeting = 2;
 }
 
 message BookAMeetingResponse {
@@ -83,6 +84,44 @@ message ListAllMeetingResponse{
   ResponseContext response_context = 1;
   repeated Meeting meetings = 2;
   Pagination pagination = 3;
+}
+
+message MeetingType {
+  google.protobuf.UInt64Value id  = 1;
+  uint64 meetingSlotLength = 2;
+  uint64 meetingLengthInMinutes = 3;
+  string title = 4;
+  string description = 5;
+  uint64 meetingBreathRoomSlot = 6;
+}
+
+message AddMeetingTypesRequest{
+  RequestContext request_context = 1;
+  MeetingType meetingType = 2;
+}
+
+message AddMeetingTypesResponse{
+  ResponseContext response_context = 1;
+}
+
+
+message DeactivateMeetingTypeRequest {
+  RequestContext request_context = 1;
+  google.protobuf.UInt64Value meetingTypeId = 2;
+}
+
+message DeactivateMeetingTypeResponse {
+  ResponseContext response_context = 1;
+}
+
+message ListActiveMeetingTypesForServiceRequest{
+  RequestContext request_context = 1;
+  google.protobuf.UInt64Value serviceId = 2;
+}
+
+message ListActiveMeetingTypesForServiceResponse{
+  ResponseContext response_context = 1;
+  repeated MeetingType meetingTypes = 2;
 }
 
 

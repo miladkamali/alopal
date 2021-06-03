@@ -16,6 +16,7 @@ enum RatingScore{
   Three = 2;
   Four = 3;
   Five = 4;
+  Not_Rated = 5;
 }
 
 message Rate{
@@ -24,6 +25,7 @@ message Rate{
   google.protobuf.UInt64Value serviceId = 2;
   google.protobuf.UInt64Value meetId = 3;
   string comment = 4;
+  RatingScore ratingScore = 5;
 }
 
 message RateServiceRequest{

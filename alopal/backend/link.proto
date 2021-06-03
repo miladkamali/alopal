@@ -15,6 +15,7 @@ import "alopal/backend/base.proto";
 
 message UploadLinkRequest{
   RequestContext request_context = 1;
+  string fileExtention = 2;
 }
 
 message UploadLinkResponse{

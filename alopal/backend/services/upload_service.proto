@@ -10,7 +10,7 @@ import "google/api/annotations.proto";
 import "google/api/http.proto";
 import "alopal/backend/link.proto";
 service UploadService {
-  //implemented
+  //not implemented
   rpc RequestUploadLink(UploadLinkRequest) returns (UploadLinkResponse){
     option(google.api.http) = {
       post : "/api/upload/requestLink"
@@ -18,7 +18,7 @@ service UploadService {
     };
   };
 
-  // not implemented
+  //implemented
   rpc AssetDownloadLink(AssetDownloadLinkRequest) returns (AssetDownloadLinkResponse){
     option(google.api.http) = {
       post : "/api/Download/requestLink"

@@ -10,7 +10,7 @@ import "google/api/annotations.proto";
 import "google/api/http.proto";
 import "alopal/backend/meet.proto";
 service MeetingService {
-  //not implemented
+  //implemented
   rpc SetAMeeting(BookAMeetingRequest) returns (BookAMeetingResponse){
     option(google.api.http) = {
       post : "/api/meeting/book"
@@ -26,8 +26,8 @@ service MeetingService {
     };
   };
 
-  //not implemented
-  rpc ListMeetings(ListActiveMeetingRequest) returns (ListActiveMeetingRequest){
+  //implemented
+  rpc ListMeetings(ListActiveMeetingRequest) returns (ListActiveMeetingResponse){
     option(google.api.http) = {
       post : "/api/meeting/list/active"
       body : "*"

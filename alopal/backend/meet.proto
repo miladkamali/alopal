@@ -12,7 +12,7 @@ import "google/type/date.proto";
 
 
 message MeetingTime{
-  repeated int64 timeSlotIds=1;
+  repeated int64 timeSlotIds = 1;
 }
 
 enum MeetingStatus{
@@ -28,13 +28,13 @@ enum MeetingStatus{
 
 message Meeting{
   // optional server will always send it in responses
-  google.protobuf.UInt64Value id=1 ;
+  google.protobuf.UInt64Value id = 1 ;
   // it is required to send this field
-  google.protobuf.UInt64Value professionProfileId=2;
+  google.protobuf.UInt64Value professionProfileId = 2;
   //required
-  google.protobuf.UInt64Value sessionTypeId=3;
+  google.protobuf.UInt64Value sessionTypeId = 3;
   //required
-  google.protobuf.UInt64Value userProfileId=4;
+  google.protobuf.UInt64Value userProfileId = 4;
   MeetingTime meetingTime = 5;
   MeetingType meetingType = 6;
 
@@ -52,16 +52,16 @@ message BookAMeetingRequest {
 
 message BookAMeetingResponse {
   ResponseContext response_context = 1;
-  Meeting meeting= 2;
+  Meeting meeting = 2;
 }
 
 message CancelAMeetingRequest{
   RequestContext request_context = 1;
-  Meeting meeting=2;
+  Meeting meeting = 2;
 }
 
 message CancelAMeetingResponse{
-   ResponseContext response_context = 1;
+  ResponseContext response_context = 1;
 }
 
 message ListActiveMeetingRequest{
@@ -87,12 +87,16 @@ message ListAllMeetingResponse{
 }
 
 message MeetingType {
-  google.protobuf.UInt64Value id  = 1;
+  google.protobuf.UInt64Value id = 1;
   uint64 meetingSlotLength = 2;
   uint64 meetingLengthInMinutes = 3;
   string title = 4;
   string description = 5;
   uint64 meetingBreathRoomSlot = 6;
+  // session price that alo has to pay
+  alopal.backend.Currency sessionPrice = 7;
+  // pals cut from the original price
+  alopal.backend.Currency palCut = 8;
 }
 
 message AddMeetingTypesRequest{

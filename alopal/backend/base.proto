@@ -17,8 +17,14 @@ message ResponseContext {
 }
 
 message Iso8601DateTime{
-  string time=1;
+  string time = 1;
 }
+
+message Currency{
+  string amount = 1;
+  string ISOType = 2;
+}
+
 
 message ImageAsset {
   string asset_id = 1;
@@ -44,8 +50,8 @@ message Bearer{
 }
 
 message Captcha{
-  string captcha_id=1;
-  string captcha_result=2;
+  string captcha_id = 1;
+  string captcha_result = 2;
 }
 
 message Page {
@@ -84,7 +90,7 @@ message TrakingInfo{
   repeated string  transaction_ids = 3;
   google.protobuf.Timestamp request_time = 4;
   google.protobuf.Timestamp response_time = 5;
-  int32 duration=6;
+  int32 duration = 6;
 }
 
 message LogEntryPayload {
@@ -115,13 +121,13 @@ message LogEntry {
   LogEntryPayload response = 4;
 
   // Debug information in case of throwing exception.
-//  LogEntryDebugInfo debug_info = 5;
-//
-//  // Client's user name and party ID, after login. For anonymous login, `phoneNumbers` is populated.
-//  solutions.saman.base.User user = 11;
-//
-//  // Client's device information.
-//  solutions.saman.base.Device device = 12;
+  //  LogEntryDebugInfo debug_info = 5;
+  //
+  //  // Client's user name and party ID, after login. For anonymous login, `phoneNumbers` is populated.
+  //  solutions.saman.base.User user = 11;
+  //
+  //  // Client's device information.
+  //  solutions.saman.base.Device device = 12;
 
   // Custom log data.
   map<string, string> custom = 31;

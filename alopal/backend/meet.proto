@@ -32,10 +32,11 @@ message Meeting{
   // it is required to send this field
   google.protobuf.UInt64Value professionProfileId = 2;
   //required
-  google.protobuf.UInt64Value sessionTypeId = 3;
+  google.protobuf.UInt64Value meetingTypeId = 3;
   //required
   google.protobuf.UInt64Value userProfileId = 4;
   MeetingTime meetingTime = 5;
+  // will be returned by the server
   MeetingType meetingType = 6;
 
 }

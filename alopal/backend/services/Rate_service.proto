@@ -11,6 +11,8 @@ import "google/api/http.proto";
 import "alopal/backend/Rate.proto";
 service RateService {
   //implemented
+  // this service will check if user has voted on a service profile or a meeting
+  // consequent voting will update previous ones
   rpc SetRating(RateServiceRequest) returns (RateServiceResponse){
     option(google.api.http) = {
       post : "/api/rate"

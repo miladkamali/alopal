@@ -16,15 +16,20 @@ enum RatingScore{
   Three = 2;
   Four = 3;
   Five = 4;
+  Not_Rated = 5;
 }
 
 message Rate{
   //server provides the id
   google.protobuf.UInt64Value id = 1;
-  google.protobuf.UInt64Value serviceId = 2;
+  // you should always provide serviceProfileId
+  // each user can only rate a service profile once
+  // consequence rating will override the previous one.
+  google.protobuf.UInt64Value serviceProfileId = 2;
+  // if you are rating a meeting then you can rate that meeting specifically
   google.protobuf.UInt64Value meetId = 3;
   string comment = 4;
-  RatingScore rate = 5;
+  RatingScore ratingScore = 5;
 }
 
 message RateServiceRequest{
@@ -34,6 +39,7 @@ message RateServiceRequest{
 
 message RateServiceResponse{
   ResponseContext response_context = 1;
+  bool hasUpdatedPreviousRating = 2;
 }
 
 message ListRatingForServiceRequest {

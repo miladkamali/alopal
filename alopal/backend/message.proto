@@ -9,11 +9,13 @@ import "alopal/backend/base.proto";
 
 
 message Message{
-  google.protobuf.UInt64Value senderProfileId = 1;
-  google.protobuf.UInt64Value receiverProfileId =2;
+  google.protobuf.UInt64Value senderUserId = 1;
+  google.protobuf.UInt64Value receiverUserId =2;
   google.protobuf.UInt64Value messageId = 3;
-  string title = 4;
-  string content = 5;
+  // optional: if a message is on a meeting, meeting id has to be added
+  google.protobuf.UInt64Value meetingId = 4;
+  string title = 5;
+  string content = 6;
 }
 
 message MessageStatusContainer{
@@ -46,6 +48,13 @@ message SetMessageAsReadRequest {
 
 message SetMessageAsReadResponse {
   ResponseContext response_context = 1 ;
+}
+
+
+message ListMessageForMeeting{
+  RequestContext request_context=1;
+  //optional: if you need messages on a meeting you should add meeting id otherwise you are receiving all the messages
+  google.protobuf.UInt64Value meetingId = 2;
 }
 
 message ListMessagesRequest {

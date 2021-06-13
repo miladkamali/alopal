@@ -18,15 +18,39 @@ service MessageService {
     };
   };
 
-  // not implemented
-  rpc ListMessages(ListMessagesRequest) returns (ListMessagesResponse){
+  // implemented
+// this API list all messages sent by user
+  rpc ListSentMessages(ListMessagesRequest) returns (ListMessagesResponse){
     option(google.api.http) = {
-      post : "/api/message/list"
+      post : "/api/message/list/sent"
       body : "*"
     };
   };
 
-  // not implemented
+  // implemented
+  // this api list all the messages for a meeting
+  // since message has a sender and receiver id, you can identify if you have send the message or received it
+  // base on these ids.
+  rpc ListMessagesForMeeting(ListMessageForMeeting) returns (ListMessagesResponse){
+    option(google.api.http) = {
+      post : "/api/message/list/meeting"
+      body : "*"
+    };
+  };
+
+  // implemented
+  // this API list all messages received by user
+  rpc ListReceivedMessages(ListMessagesRequest) returns (ListMessagesResponse){
+    option(google.api.http) = {
+      post : "/api/message/list/received"
+      body : "*"
+    };
+  };
+
+  // implemented
+  // this API is called when user reads a message.
+  // since we are delivering messages in bulk for each message that user reads
+  // this api has to be called.
   rpc ReadMessage(SetMessageAsReadRequest) returns (SetMessageAsReadResponse){
     option(google.api.http) = {
       post : "/api/message/read"
@@ -34,7 +58,8 @@ service MessageService {
     };
   };
 
-  // not implemented
+  // implemented
+  // you can only delete messages that are not read yet!
   rpc DeleteMessage(DeleteMessageRequest) returns (DeleteMessageResponse){
     option(google.api.http) = {
       post : "/api/message/delete"

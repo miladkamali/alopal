@@ -73,6 +73,12 @@ message GetServiceProfileByIdRequest{
 message GetServiceProfileByIdResponse{
   ResponseContext response_context = 1;
   ServiceProfileData profile = 2;
+  google.protobuf.UInt64Value userId = 3;
+  google.protobuf.UInt64Value baseProfileId=4;
+  string imageId=5;
+  string firstName=6;
+  string lastName=7;
+
 }
 
 

@@ -38,6 +38,7 @@ message UserBaseInfo {
 
 }
 
+
 message UserInfo {
   UserBaseInfo user_base_info=1;
 

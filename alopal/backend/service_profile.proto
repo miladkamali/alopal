@@ -63,3 +63,24 @@ message GetCurrentServiceProfileResponse{
   ResponseContext response_context = 1;
   ServiceProfileData profile = 2;
 }
+
+
+message GetServiceProfileByIdRequest{
+  RequestContext request_context = 1;
+  google.protobuf.UInt64Value serviceProfileId= 2;
+}
+
+message GetServiceProfileByIdResponse{
+  ResponseContext response_context = 1;
+  ServiceProfileData profile = 2;
+}
+
+
+message GetAllServiceProfileRequest{
+  RequestContext request_context = 1;
+}
+
+message GetAllServiceProfileResponse{
+  ResponseContext response_context = 1;
+  repeated ServiceProfileData profile = 2;
+}

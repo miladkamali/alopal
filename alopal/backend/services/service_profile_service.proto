@@ -30,4 +30,17 @@ service ServiceProfileService {
       body : "*"
     };
   };
+  rpc GetServiceProfileById(GetServiceProfileByIdRequest) returns (GetServiceProfileByIdResponse){
+    option(google.api.http) = {
+      post : "/api/profile/service/get"
+      body : "*"
+    };
+  };
+
+  rpc GetAllServiceProfile(GetAllServiceProfileRequest) returns (GetAllServiceProfileResponse){
+    option(google.api.http) = {
+      post : "/api/profile/service/get/all"
+      body : "*"
+    };
+  };
 }

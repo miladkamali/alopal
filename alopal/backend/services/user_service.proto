@@ -32,5 +32,12 @@ service UserService {
     };
   };
 
+  rpc UpdateUserPassword(UpdatePasswordRequest) returns (UpdatePasswordResponse){
+    option(google.api.http) = {
+      post : "/api/user/password/update"
+      body : "*"
+    };
+  };
+
 
 }

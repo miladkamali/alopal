@@ -13,10 +13,22 @@ enum UserType {
   ADMIN = 2;
 }
 
+message UpdatePasswordRequest{
+  RequestContext request_context = 1;
+  google.protobuf.StringValue oldPassword = 2;
+  google.protobuf.StringValue newPassword = 3;
+
+}
+
+message UpdatePasswordResponse {
+  ResponseContext response_context = 1 ;
+
+}
+
 message RegisterUserRequest {
-  RequestContext request_context=1;
-  UserBaseInfo user=2;
-  string password =3;
+  RequestContext request_context = 1;
+  UserBaseInfo user = 2;
+  string password = 3;
   UserType user_type = 4;
 }
 
@@ -31,8 +43,8 @@ message ListAllUsers {
 }
 
 message UserBaseInfo {
-  uint64 userId=1;
-  string username=2;
+  uint64 userId = 1;
+  string username = 2;
   string email_address = 3;
   UserType userType = 4;
 
@@ -40,7 +52,7 @@ message UserBaseInfo {
 
 
 message UserInfo {
-  UserBaseInfo user_base_info=1;
+  UserBaseInfo user_base_info = 1;
 
 
 }
@@ -52,7 +64,7 @@ message ListAllUserRequest {
 
 message ListAllUserResponse {
   repeated UserInfo user_list = 1;
-  Pagination pagination=2;
+  Pagination pagination = 2;
 }
 
 

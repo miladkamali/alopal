@@ -10,7 +10,7 @@ import "alopal/backend/base.proto";
 
 message Message{
   google.protobuf.UInt64Value senderUserId = 1;
-  google.protobuf.UInt64Value receiverUserId =2;
+  google.protobuf.UInt64Value receiverUserId = 2;
   google.protobuf.UInt64Value messageId = 3;
   // optional: if a message is on a meeting, meeting id has to be added
   google.protobuf.UInt64Value meetingId = 4;
@@ -24,8 +24,24 @@ message MessageStatusContainer{
 }
 
 message sendMessageRequest {
-  RequestContext request_context=1;
+  RequestContext request_context = 1;
   Message message = 2;
+}
+
+message ListCorrespondantsRequest{
+  RequestContext request_context = 1;
+}
+
+message Correspondant{
+  string firstName = 1;
+  string lastName = 2;
+  string avatarLink =3;
+  uint64 userId = 4;
+}
+message ListCorrespondantsResponse{
+  ResponseContext response_context = 1 ;
+  repeated Correspondant correspondants=2;
+
 }
 
 message sendMessageResponse {
@@ -33,7 +49,7 @@ message sendMessageResponse {
 }
 
 message DeleteMessageRequest{
-  RequestContext request_context=1;
+  RequestContext request_context = 1;
   uint64 messageId = 2;
 }
 
@@ -42,7 +58,7 @@ message DeleteMessageResponse{
 }
 
 message SetMessageAsReadRequest {
-  RequestContext request_context=1;
+  RequestContext request_context = 1;
   uint64 messageId = 2;
 }
 
@@ -52,13 +68,13 @@ message SetMessageAsReadResponse {
 
 
 message ListMessageForMeeting{
-  RequestContext request_context=1;
+  RequestContext request_context = 1;
   //optional: if you need messages on a meeting you should add meeting id otherwise you are receiving all the messages
   google.protobuf.UInt64Value meetingId = 2;
 }
 
 message ListMessagesRequest {
-  RequestContext request_context=1;
+  RequestContext request_context = 1;
 }
 
 message ListMessagesResponse{

@@ -16,6 +16,7 @@ message Message{
   google.protobuf.UInt64Value meetingId = 4;
   string title = 5;
   string content = 6;
+  Iso8601DateTime sendTime = 7;
 }
 
 message MessageStatusContainer{
@@ -35,12 +36,12 @@ message ListCorrespondantsRequest{
 message Correspondant{
   string firstName = 1;
   string lastName = 2;
-  string avatarLink =3;
+  string avatarLink = 3;
   uint64 userId = 4;
 }
 message ListCorrespondantsResponse{
   ResponseContext response_context = 1 ;
-  repeated Correspondant correspondants=2;
+  repeated Correspondant correspondants = 2;
 
 }
 

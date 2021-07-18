@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+package alopal.backend;
+option cc_enable_arenas = true;
+option java_multiple_files = true;
+option java_package = "alopal.backend";
+import "google/protobuf/wrappers.proto";
+import "alopal/backend/base.proto";
+
+message FAQ{
+  google.protobuf.UInt64Value id = 1;
+  string question = 2;
+  string answer = 3;
+}
+
+message AddFAQRequest {
+  RequestContext request_context = 1;
+  FAQ faq = 2;
+}
+
+message AddFAQResponse{
+  ResponseContext response_context = 1;
+  FAQ faq = 2;
+}
+
+message UpdateFAQRequest {
+  RequestContext request_context = 1;
+  FAQ faq = 2;
+}
+
+message UpdateFAQResponse{
+  ResponseContext response_context = 1;
+  FAQ faq = 2;
+}
+
+
+message DeleteFAQRequest {
+  RequestContext request_context = 1;
+  google.protobuf.UInt64Value faqId = 2;
+}
+
+message DeleteFAQResponse{
+  ResponseContext response_context = 1;
+  FAQ faq = 2;
+}
+
+
+message ListFAQRequest{
+  RequestContext request_context = 1;
+}
+
+message ListFAQResponse{
+  ResponseContext response_context = 1;
+  repeated FAQ faq = 2;
+}

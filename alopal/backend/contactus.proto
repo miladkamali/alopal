@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package alopal.backend;
+option cc_enable_arenas = true;
+option java_multiple_files = true;
+option java_package = "alopal.backend";
+import "google/protobuf/wrappers.proto";
+import "alopal/backend/base.proto";
+
+enum ContactCategory {
+  General = 0;
+  IssueWithService = 1;
+  BusinessInquiry = 2 ;
+  Complaint = 3;
+}
+
+
+message ContactMessage {
+  google.protobuf.UInt64Value id = 1;
+  Iso8601DateTime postDate = 2;
+  ContactCategory category = 3;
+  string title = 4;
+  string message  = 5;
+  string emailAddress = 6;
+  bool hasBeenReviewed = 7;
+}
+
+message ContactMessageRequest{
+  RequestContext request_context = 1;
+  ContactMessage contactMessage = 2;
+}
+
+message ContactMessageResponse {
+  ResponseContext response_context = 1;
+}
+
+message ListContactsUsMessagesRequest{
+  RequestContext request_context = 1;
+}
+
+message ListContactsUsMessagesResponse{
+  RequestContext request_context = 1;
+  repeated ContactMessage messages = 2;
+}

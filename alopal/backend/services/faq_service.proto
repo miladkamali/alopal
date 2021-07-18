@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package alopal.backend.services;
+option cc_enable_arenas = true;
+option java_multiple_files = true;
+option java_package = "alopal.backend.services";
+import "google/protobuf/wrappers.proto";
+import "alopal/backend/faq.proto";
+import "google/api/annotations.proto";
+import "google/api/http.proto";
+
+
+service FAQService {
+  rpc AddFAQ(AddFAQRequest) returns (AddFAQResponse){
+    option(google.api.http) = {
+      post : "/api/faq/add"
+      body : "*"
+    };
+  };
+
+  rpc UpdateFAQ(UpdateFAQRequest) returns (UpdateFAQResponse){
+    option(google.api.http) = {
+      post : "/api/faq/update"
+      body : "*"
+    };
+  };
+
+  rpc DeleteFAQ(DeleteFAQRequest) returns (DeleteFAQResponse){
+    option(google.api.http) = {
+      post : "/api/faq/delete"
+      body : "*"
+    };
+  };
+
+  rpc ListFAQ(ListFAQRequest) returns (ListFAQResponse){
+    option(google.api.http) = {
+      post : "/api/faq/list"
+      body : "*"
+    };
+  };
+
+
+}

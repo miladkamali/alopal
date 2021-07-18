@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package alopal.backend.services;
+option cc_enable_arenas = true;
+option java_multiple_files = true;
+option java_package = "alopal.backend.services";
+import "google/protobuf/wrappers.proto";
+import "alopal/backend/contactus.proto";
+import "google/api/annotations.proto";
+import "google/api/http.proto";
+
+
+service ContactService {
+  rpc PostMessage(ContactMessageRequest) returns (ContactMessageResponse){
+    option(google.api.http) = {
+      post : "/api/contactus/post"
+      body : "*"
+    };
+  };
+
+  rpc List(ListContactsUsMessagesRequest) returns (ListContactsUsMessagesResponse){
+    option(google.api.http) = {
+      post : "/api/contactus/list"
+      body : "*"
+    };
+  };
+}

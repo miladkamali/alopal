@@ -31,6 +31,10 @@ message ServiceProfileData{
   string serviceDescription = 4;
   repeated Info extraInfo = 5;
   repeated Info credential = 6;
+  double averageRate=7;
+  double numberOfRate=8;
+  double minimumRate=9;
+  double maximumRate=10;
 }
 
 message SetServiceProfileRequest {
@@ -64,6 +68,15 @@ message GetCurrentServiceProfileResponse{
   ServiceProfileData profile = 2;
 }
 
+message GetServiceCommentsByIdRequest{
+  RequestContext request_context = 1;
+  google.protobuf.UInt64Value serviceProfileId= 2;
+}
+
+message GetServiceCommentsByIdResponse{
+  ResponseContext response_context = 1;
+  google.protobuf.UInt64Value serviceProfileId= 2;
+}
 
 message GetServiceProfileByIdRequest{
   RequestContext request_context = 1;

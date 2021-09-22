@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package alopal.backend.services;
+option cc_enable_arenas = true;
+option java_multiple_files = true;
+option java_package = "alopal.backend.services";
+import "google/protobuf/wrappers.proto";
+import "alopal/backend/contactus.proto";
+import "google/api/annotations.proto";
+import "google/api/http.proto";
+import "alopal/backend/financial.proto";
+
+
+service VoucherService {
+  rpc CreateVoucher(CreateVoucherRequest) returns (CreateVoucherResponse){
+    option(google.api.http) = {
+      post : "/api/voucher/create"
+      body : "*"
+    };
+  };
+  rpc CheckVoucher(CheckVoucherRequest) returns (CheckVoucherResponse){
+    option(google.api.http) = {
+      post : "/api/voucher/check"
+      body : "*"
+    };
+  };
+
+  rpc ListAllVoucher(ListAllVoucherRequest) returns (ListAllVoucherResponse){
+    option(google.api.http) = {
+      post : "/api/voucher/list/all"
+      body : "*"
+    };
+  };
+}

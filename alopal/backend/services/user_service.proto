@@ -39,5 +39,19 @@ service UserService {
     };
   };
 
+  rpc SendPasswordTokenToEmail(RequestEmailForForgetPasswordRequest) returns (RequestEmailForForgetPasswordResponse){
+    option(google.api.http) = {
+      post : "/api/user/reset/email-token"
+      body : "*"
+    };
+  };
+
+  rpc ResetPassword(ResetForgottenPasswordRequest) returns (ResetForgottenPasswordResponse){
+    option(google.api.http) = {
+      post : "/api/user/reset/password"
+      body : "*"
+    };
+  };
+
 
 }

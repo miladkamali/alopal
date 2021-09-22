@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+package alopal.backend;
+option cc_enable_arenas = true;
+option java_multiple_files = true;
+option java_package = "alopal.backend";
+import "google/protobuf/wrappers.proto";
+import "alopal/backend/base.proto";
+
+message Testimony{
+  google.protobuf.UInt64Value id = 1;
+  string author=2;
+  string testimony = 3;
+
+}
+
+message AddUserTestimonyRequest {
+  RequestContext request_context = 1;
+  Testimony testimony = 2;
+}
+
+message AddUserTestimonyResponse{
+  ResponseContext response_context = 1;
+  Testimony testimony = 2;
+}
+
+message DeleteUserTestimonyRequest{
+  RequestContext request_context = 1;
+  google.protobuf.UInt64Value testimonyId=2;
+}
+
+message DeleteUserTestimonyResponse{
+  ResponseContext response_context = 1;
+  Testimony testimony = 2;
+}
+
+message ListTestimonyRequest{
+  RequestContext request_context = 1;
+  Page page=2;
+}
+
+message ListTestimonyResponse {
+  ResponseContext response_context = 1;
+   repeated Testimony testimony = 2;
+}

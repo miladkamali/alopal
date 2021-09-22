@@ -27,7 +27,16 @@ service MeetingService {
   };
 
   //implemented
-  rpc ListMeetings(ListActiveMeetingRequest) returns (ListActiveMeetingResponse){
+  rpc ListUpComingMeetings(ListActiveMeetingRequest) returns (ListActiveMeetingResponse){
+    option(google.api.http) = {
+      post : "/api/meeting/list/active"
+      body : "*"
+    };
+  };
+
+
+  // todo: implement all meeting list
+  rpc ListAllMeetings(ListAllMeetingRequest) returns (ListAllMeetingResponse){
     option(google.api.http) = {
       post : "/api/meeting/list/active"
       body : "*"
@@ -57,4 +66,7 @@ service MeetingService {
       body : "*"
     };
   };
+
+  //todo: return list of people we have session with
+  
 }

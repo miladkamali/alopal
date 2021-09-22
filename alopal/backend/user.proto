@@ -13,6 +13,26 @@ enum UserType {
   ADMIN = 2;
 }
 
+message RequestEmailForForgetPasswordRequest{
+  google.protobuf.StringValue emailAddress = 1;
+}
+
+message RequestEmailForForgetPasswordResponse{
+  ResponseContext response_context = 1 ;
+}
+
+message ResetForgottenPasswordRequest{
+  google.protobuf.UInt64Value tokenId = 1;
+  google.protobuf.StringValue emailToken = 2;
+  google.protobuf.StringValue emailAddress = 3;
+  google.protobuf.StringValue password = 4;
+}
+
+message ResetForgottenPasswordResponse{
+  ResponseContext response_context = 1 ;
+
+}
+
 message UpdatePasswordRequest{
   RequestContext request_context = 1;
   google.protobuf.StringValue oldPassword = 2;

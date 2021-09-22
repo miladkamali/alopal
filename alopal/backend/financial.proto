@@ -9,10 +9,10 @@ import "google/rpc/status.proto";
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/any.proto";
 import "google/api/http.proto";
-
+import "alopal/backend/base.proto";
 
 message Wallet{
-  string id=1;
+  string id = 1;
 }
 message BankInfo{
   string sheba_number = 1;
@@ -22,4 +22,73 @@ message FinancialInformation {
     Wallet wallet = 1;
     BankInfo bankInfo = 2;
   }
+}
+
+
+message Voucher{
+  string id = 1;
+  //string code = 2;
+  Currency amount = 3;
+  string info = 4;
+}
+
+message ListAllVoucherRequest{
+  RequestContext request_context = 1;
+  bool includeUsed = 2;
+  Page page = 3;
+}
+
+message ListAllVoucherResponse{
+  ResponseContext response_context = 1;
+  repeated Voucher vouchers=2;
+}
+
+message CreateVoucherRequest{
+  RequestContext request_context = 1;
+  Currency amount = 2;
+  string info = 3;
+}
+
+message CreateVoucherResponse{
+  ResponseContext response_context = 1;
+  Voucher voucher = 2;
+}
+
+message CheckVoucherRequest{
+  RequestContext request_context = 1;
+  string voucherId = 2;
+}
+
+
+message CheckVoucherResponse{
+  ResponseContext response_context = 1;
+  bool isValid = 2;
+  Voucher voucher = 3;
+}
+
+message AddVoucherToWalletRequest{
+  RequestContext request_context = 1;
+  Voucher voucher = 2;
+  string walletId = 3;
+}
+
+message AddVoucherToWalletResponse{
+  ResponseContext response_context = 1;
+  Currency walletBalance = 2;
+}
+
+
+message PayPalPaymentInfo{
+
+}
+
+message ChargeWalletByPaypalRequest{
+  RequestContext request_context = 1;
+  string walletId = 2;
+  alopal.backend.Currency currency = 3;
+  PayPalPaymentInfo paypalPaymentInfo = 4;
+}
+
+message ChargeWalletByPaypalResponse{
+  ResponseContext response_context = 1;
 }

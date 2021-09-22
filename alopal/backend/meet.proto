@@ -70,6 +70,7 @@ message ListActiveMeetingRequest{
 }
 
 
+
 message ListActiveMeetingResponse{
   ResponseContext response_context = 1;
   repeated Meeting meetings = 2;

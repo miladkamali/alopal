@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package alopal.backend.services;
+option cc_enable_arenas = true;
+option java_multiple_files = true;
+option java_package = "alopal.backend.services";
+import "google/protobuf/wrappers.proto";
+import "alopal/backend/contactus.proto";
+import "google/api/annotations.proto";
+import "google/api/http.proto";
+import "alopal/backend/financial.proto";
+
+
+service WalletService {
+  rpc ChargeWalletByPayPal(ChargeWalletByPaypalRequest) returns (ChargeWalletByPaypalResponse){
+    option(google.api.http) = {
+      post : "/api/wallet/paypal/charge"
+      body : "*"
+    };
+  };
+
+  rpc ChargeWalletByVoucher(AddVoucherToWalletRequest) returns (AddVoucherToWalletResponse){
+    option(google.api.http) = {
+      post : "/api/wallet/voucher/charge"
+      body : "*"
+    };
+  };
+}

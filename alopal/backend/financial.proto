@@ -13,6 +13,7 @@ import "alopal/backend/base.proto";
 
 message Wallet{
   string id = 1;
+  Currency balance = 2;
 }
 message BankInfo{
   string sheba_number = 1;
@@ -40,7 +41,7 @@ message ListAllVoucherRequest{
 
 message ListAllVoucherResponse{
   ResponseContext response_context = 1;
-  repeated Voucher vouchers=2;
+  repeated Voucher vouchers = 2;
 }
 
 message CreateVoucherRequest{
@@ -48,6 +49,28 @@ message CreateVoucherRequest{
   Currency amount = 2;
   string info = 3;
 }
+
+message GetCurrentWalletBalanceRequest{
+  RequestContext request_context = 1;
+}
+
+message GetCurrentWalletBalanceResponse{
+  ResponseContext response_context = 1;
+  Wallet wallet = 2;
+}
+
+message GetAnyWalletBalanceRequest{
+  RequestContext request_context = 1;
+  google.protobuf.UInt64Value userId = 2;
+  google.protobuf.StringValue emailAddress = 3;
+  google.protobuf.UInt64Value walletId = 4;
+}
+
+message GetAnyWalletBalanceResponse{
+  ResponseContext response_context = 1;
+  Wallet wallet = 2;
+}
+
 
 message CreateVoucherResponse{
   ResponseContext response_context = 1;

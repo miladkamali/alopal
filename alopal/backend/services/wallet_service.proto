@@ -25,4 +25,21 @@ service WalletService {
       body : "*"
     };
   };
+
+  rpc GetAnyWalletBalance(GetAnyWalletBalanceRequest) returns (GetAnyWalletBalanceResponse){
+    option(google.api.http) = {
+      post : "/api/wallet/any"
+      body : "*"
+    };
+  };
+
+
+  rpc GetCurrentWalletBalance(GetCurrentWalletBalanceRequest) returns (GetCurrentWalletBalanceResponse){
+    option(google.api.http) = {
+      post : "/api/wallet/current"
+      body : "*"
+    };
+  };
+
+
 }

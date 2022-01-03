@@ -38,7 +38,7 @@ service MeetingService {
   // todo: implement all meeting list
   rpc ListAllMeetings(ListAllMeetingRequest) returns (ListAllMeetingResponse){
     option(google.api.http) = {
-      post : "/api/meeting/list/active"
+      post : "/api/meeting/list/all"
       body : "*"
     };
   };

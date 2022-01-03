@@ -75,5 +75,12 @@ service MessageService {
     };
   };
 
+  rpc GetInboxStatus(ListCorrespondantsRequest) returns (ListCorrespondantsResponse){
+    option(google.api.http) = {
+      post : "/api/message/list/correspondents"
+      body : "*"
+    };
+  };
+
 
 }

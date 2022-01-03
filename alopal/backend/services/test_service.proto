@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package alopal.backend.services;
+option cc_enable_arenas = true;
+option java_multiple_files = true;
+option java_package = "alopal.backend.services";
+import "google/protobuf/wrappers.proto";
+import "alopal/backend/contactus.proto";
+import "google/api/annotations.proto";
+import "google/api/http.proto";
+import "alopal/backend/financial.proto";
+import "alopal/backend/test.proto";
+
+
+service TestService {
+  rpc Test1(TestRequest) returns (TestResponse){
+    option(google.api.http) = {
+      post : "/api/test/request1"
+      body : "*"
+    };
+  };
+}

@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package alopal.backend;
+option cc_enable_arenas = true;
+option java_multiple_files = true;
+option java_package = "alopal.backend";
+import "google/protobuf/wrappers.proto";
+import "alopal/backend/base.proto";
+
+message TestRequest{
+  RequestContext request_context = 1;
+  google.protobuf.StringValue emailAddress = 2;
+}
+
+message TestResponse{
+  ResponseContext response_context = 1 ;
+  repeated google.protobuf.StringValue emailAddress=2;
+}
+

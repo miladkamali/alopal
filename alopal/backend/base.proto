@@ -55,7 +55,7 @@ message Captcha{
 }
 
 message Page {
-  int64 page = 1;
+  int32 page = 1;
   int32 count = 2;
 }
 

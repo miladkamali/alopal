@@ -29,6 +29,14 @@ message sendMessageRequest {
   Message message = 2;
 }
 
+message GetInboxStatusRequest{
+  RequestContext request_context = 1;
+}
+
+//message GetInboxStatusRequest{
+//  RequestContext request_context = 1;
+//}
+
 message ListCorrespondantsRequest{
   RequestContext request_context = 1;
 }
@@ -76,6 +84,7 @@ message ListMessageForMeeting{
 
 message ListMessagesRequest {
   RequestContext request_context = 1;
+  Page page=2;
 }
 
 message ListMessagesResponse{
